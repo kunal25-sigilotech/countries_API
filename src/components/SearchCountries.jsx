@@ -36,10 +36,10 @@ function settingCountries(val){
 }
   
 return (
-    <div>
-      <input type="text" value={query} onChange={e=>
+    <div className='flex items-center justify-between w-full max-w-7xl mx-auto px-12'>
+      <input type="text" placeholder='search for a country...' className='shadow-lg p-4' value={query} onChange={e=>
        setQuery(e.target.value)} />
-      <select onChange={e=> settingCountries(e.target.value)}>
+      <select onChange={e=> settingCountries(e.target.value)} className='border-2 shadow-lg boreder-gray-800 p-2 rounded-lg focus-within:outline-1 outline-blue-500'>
         <option value="All">All Countries</option>
         <option value="Africa">Africa</option>
         <option value="Americas">Americas</option>

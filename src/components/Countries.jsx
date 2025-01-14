@@ -14,7 +14,7 @@ if(isLoading) return <div>
 </div>
 
  return (
-  <div>
+  <div className='px-12 w-full max-w-7xl mx-auto'>
     <ul>
      {filteredByName.map((el,i)=><li key={i}>
         <p>{el.name.common}</p>
