@@ -1,28 +1,64 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 
 const CountryContext = createContext();
 
+
+const initalState = {
+    countries:[],
+    filteredByName:[],
+    isLoading:false,
+    error:"",
+}
+
+function reducer(state,action){
+    switch(action.type){
+        case "SET_COUNTRIES": 
+        return{...state, countries:action.payload  }
+        
+        case "SET_FILTERED_BY_NAME":
+            return{...state, filteredByName:action.payload  }
+        
+        case "START_LOADING":
+                return {...state, isLoading:true}
+
+        case "END_LOADING":
+                return{...state, isLoading:false}
+
+        case "SET_ERROR":
+            return{...state, error:action.payload}        
+
+
+        default: 
+        throw new Error("Unkwon action type")
+    }
+}
+
 export default function CountryProvider({children}){
-    const [countries,setCountries] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-    const [filteredCountries,setFilteredCountries] = useState(null);
+    const [{countries,isLoading,filteredByName,error},dispatch] = useReducer(reducer,initalState);
+
+
     
     useEffect(()=>{
         async function getCountries(){
-        setIsLoading(true);
+    try{
+       dispatch({type:"START_LOADING"});
         const res = await fetch("https://restcountries.com/v3.1/all?fields=name,flags,region,population,capital");
         const data = await res.json();
-        setCountries(data);
-        setFilteredCountries(data);
-        setIsLoading(false);
-        }
-        getCountries();
+        dispatch({type:"SET_COUNTRIES", payload:data})
+        dispatch({type:"SET_FILTERED_BY_NAME", payload:data})
+        dispatch({type:"END_LOADING"})
+        }catch(err){
+        console.error(err.message);
+        dispatch({type:"SET_ERROR", payload:err.message})
+    }
+   }
+    getCountries();
         },[])
 
         
         
     return (
-        <CountryContext.Provider value={{countries,isLoading,filteredCountries,setFilteredCountries}}>
+        <CountryContext.Provider value={{countries,isLoading,filteredByName,error,dispatch}}>
             {children}
         </CountryContext.Provider>
     )

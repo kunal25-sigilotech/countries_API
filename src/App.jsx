@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import Header from './components/Header'
+import React from 'react'
 import Countries from './components/Countries'
+import Header from './components/Header'
 import SearchCountries from './components/SearchCountries'
 import CountryProvider from './context/CountryContext'
 

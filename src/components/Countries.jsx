@@ -1,16 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react';
 import { useCountries } from '../context/CountryContext';
 
 
 function Countries(){
-const {isLoading,countries,setFilteredCountries,filteredCountries} = useCountries();
+const {isLoading,filteredByName,error} = useCountries();
 
- 
+if(error) return (<div>
+  <p>{error}</p>
+</div>);
 
-return (
+if(isLoading) return <div>
+  <p>Loading countries...</p>
+</div>
+
+ return (
   <div>
-    {isLoading || countries.length===0? <p>Loading countries...</p>:<ul>
-      {filteredCountries.map((el,i)=><li key={i}>
+    <ul>
+     {filteredByName.map((el,i)=><li key={i}>
         <p>{el.name.common}</p>
         <figure>
             <img src={el.flags.png} alt={el.name.common} />
@@ -19,7 +25,7 @@ return (
         <p>Region: {el.region}</p>
         <p>Capital: {el.capital}</p>
       </li>)}
-      </ul>}
+      </ul>
   </div>
 )
 }
