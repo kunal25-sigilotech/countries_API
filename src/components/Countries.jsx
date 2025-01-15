@@ -20,7 +20,7 @@ function Countries() {
 
   return (
     <div className="mx-auto w-full max-w-7xl px-12">
-      <ul className="grid grid-cols-[repeat(auto-fit,minmax(0,17rem))] gap-x-8 gap-y-12">
+      <ul className="grid grid-cols-[repeat(auto-fit,minmax(0,16.5rem))] gap-x-8 gap-y-12">
         {filteredByName.map((el, i) => (
           <li
             key={i}
@@ -29,7 +29,7 @@ function Countries() {
             <figure className="">
               <img
                 src={el.flags.png}
-                alt={el.name.common}
+                alt={el.name.common} 
                 loading="lazy"
                 className="block h-full w-full rounded-t-md object-cover"
               />
