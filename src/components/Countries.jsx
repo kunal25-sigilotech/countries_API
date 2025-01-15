@@ -34,9 +34,9 @@ function Countries() {
                 className="block h-full w-full rounded-t-md object-cover"
               />
             </figure>
-            <div className="flex flex-col gap-2 p-8">
+            <div className="flex flex-col gap-2 p-8 ">
               <Link className="mb-6" to={`/${el.name.common}`}>
-                <span>{el.name.common}</span>
+                <span className="font-semibold text-xl">{el.name.common}</span>
               </Link>
               <p>Population: {el.population}</p>
               <p>Region: {el.region}</p>
