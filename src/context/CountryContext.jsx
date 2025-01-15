@@ -7,6 +7,7 @@ const initalState = {
   countries: [],
   filteredByName: [],
   isLoading: false,
+  isSearching: false,
   error: "",
 };
 
@@ -27,14 +28,19 @@ function reducer(state, action) {
     case "SET_ERROR":
       return { ...state, error: action.payload };
 
+    case "SEARCHING":
+      return { ...state, isSearching: action.payload };
+
     default:
       throw new Error("Unkwon action type");
   }
 }
 
 export default function CountryProvider({ children }) {
-  const [{ countries, isLoading, filteredByName, error }, dispatch] =
-    useReducer(reducer, initalState);
+  const [
+    { countries, isLoading, filteredByName, error, isSearching },
+    dispatch,
+  ] = useReducer(reducer, initalState);
 
   useEffect(() => {
     async function getCountries() {
@@ -60,7 +66,14 @@ export default function CountryProvider({ children }) {
 
   return (
     <CountryContext.Provider
-      value={{ countries, isLoading, filteredByName, error, dispatch }}
+      value={{
+        countries,
+        isLoading,
+        filteredByName,
+        error,
+        dispatch,
+        isSearching,
+      }}
     >
       {children}
     </CountryContext.Provider>

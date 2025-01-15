@@ -22,6 +22,9 @@ export default function SearchCountries() {
       filteredCountries = filteredCountries.filter((country) =>
         country.name.common.toLowerCase().includes(modifiedQuery),
       );
+      dispatch({ type: "SEARCHING", payload: true });
+    } else {
+      dispatch({ type: "SEARCHING", payload: false });
     }
 
     dispatch({
@@ -47,14 +50,14 @@ export default function SearchCountries() {
       <input
         type="text"
         placeholder="Search for a country..."
-        className="w-full max-w-[40%] rounded-lg p-4 shadow-lg"
+        className="w-full max-w-[40%] rounded-lg p-4 shadow-lg dark:bg-gray-700 dark:text-white dark:placeholder:text-white"
         aria-label="Search countries by name"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
       <select
         onChange={(e) => handleRegionChange(e.target.value)}
-        className="rounded-lg border-2 p-2 shadow-lg outline-blue-500 focus-within:outline-1"
+        className="rounded-lg border-2 p-2 shadow-lg outline-blue-500 focus-within:outline-1 dark:border-none dark:bg-gray-700 dark:text-white dark:outline-none"
         aria-label="Filter countries by region"
       >
         <option value="">Select Region</option>

@@ -1,15 +1,28 @@
-import React, { useState } from 'react'
+import { useColorMode } from "../context/ColorModeContext";
 
-export default function Header() {
-  const [mode,setMode] = useState("light")
+function Header() {
+  const { mode, setMode } = useColorMode();
+
+  const toggleMode = () =>
+    setMode((cur) => (cur === "light" ? "dark" : "light"));
+
   return (
-    <div className='flex justify-between w-full max-w-7xl mx-auto py-4 px-12'>
-      <p className='font-semibold'>Where in the world?</p> 
+    <div className="mx-auto flex w-full max-w-7xl justify-between px-12 py-4">
+      <h1 className="text-xl font-semibold dark:text-white">
+        Where in the world?
+      </h1>
       <div>
-        <button onClick={()=>setMode(cur=>cur==="light"?"dark":"light")}>
-        <span>{mode==="light"?"🌞 Light":"🌚 Dark"}</span>
-          </button>
+        <button
+          onClick={toggleMode}
+          aria-label={`Switch to ${mode === "light" ? "dark" : "light"} mode`}
+        >
+          <span className="dark:text-white">
+            {mode === "light" ? "🌞 Light" : "🌚 Dark"}
+          </span>
+        </button>
       </div>
     </div>
-  )
+  );
 }
+
+export default Header;
