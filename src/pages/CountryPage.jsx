@@ -48,55 +48,55 @@ function CountryPage() {
     );
 
   return (
-    <section className="dark:text-white">
-      <div className="mx-auto grid h-dvh w-full max-w-7xl grid-cols-2 grid-rows-[min-content_20rem] gap-x-10 gap-y-12 px-8 py-6 pb-12">
+    <section className="dark:text-white @container">
+      <div className="mx-auto grid w-full max-w-7xl @4xl:grid-cols-2 grid-cols-1 @4xl:grid-rows-[min-content_minmax(0,20rem)] grid-rows-[min-content_18rem_min-content] gap-x-10 gap-y-12 px-8 py-6 pb-12">
         <Link
           to="/"
           role="button"
           className="col-start-1 col-end-2 flex items-center gap-2 self-start justify-self-start rounded-xl bg-white px-10 py-2 shadow-lg dark:bg-gray-700 dark:text-white"
         >
           <span>&larr;</span>
-          <span>Back</span>
+          <span className="@md:text-base text-sm font-semibold">Back</span>
         </Link>
-        <figure className="col-start-1 col-end-2 border-8 border-gray-300">
+        <figure className="col-start-1 col-end-2 border-8 border-gray-300 dark:border-gray-700 ">
           <img
             src={country.flags.png}
             alt={country.name.common}
             className="block h-full w-full object-cover"
           />
         </figure>
-        <div className="col-start-2 col-end-3 grid grid-cols-2 grid-rows-[repeat(3,min-content)] gap-x-8 gap-y-8 self-center justify-self-center">
+        <div className="@4xl:col-start-2 @4xl:col-end-3 col-start-1 grid @md:grid-cols-2 grid-cols-1 grid-rows-[repeat(3,min-content)] gap-x-8 gap-y-8 self-center @4xl:justify-self-center justify-self-start">
           <h1 className="col-span-full text-2xl font-semibold">
             {country.name.common}
           </h1>
-          <div>
-            <p>
+          <div className="col-start-1">
+            <p className="@md:text-base text-sm">
               <span className="font-semibold">Population: </span>
               <span>{country.population}</span>
             </p>
-            <p>
+            <p className="@md:text-base text-sm">
               <span className="font-semibold">Region: </span>
               <span>{country.region}</span>
             </p>
-            <p>
+            <p className="@md:text-base text-sm">
               <span className="font-semibold">Sub-Region: </span>
               <span>{country.subregion}</span>
             </p>
-            <p>
+            <p className="@md:text-base text-sm">
               <span className="font-semibold">Capital: </span>
               <span>{country.capital}</span>
             </p>
           </div>
-          <div>
-            <p>
+          <div className="@md:col-start-2 col-start-1">
+            <p className="@md:text-base text-sm">
               <span className="font-semibold">Top-level-domain: </span>
               <span>{country.tld[0]}</span>
             </p>
-            <p>
+            <p className="@md:text-base text-sm">
               <span className="font-semibold">Languages: </span>
               <span>{languages.join(", ")}</span>
             </p>
-            <p>
+            <p className="@md:text-base text-sm">
               <span className="font-semibold">Currency: </span>
               <span>{currency}</span>
             </p>

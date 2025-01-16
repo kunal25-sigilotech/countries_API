@@ -46,11 +46,12 @@ export default function SearchCountries() {
   }, [query, selectedRegion, filterCountries]);
 
   return (
-    <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-12">
+    
+    <div className="mx-auto @2xl:flex-row flex flex-col w-full max-w-7xl @2xl:items-center items-start justify-between px-12 @2xl:gap-0 gap-10">
       <input
         type="text"
         placeholder="Search for a country..."
-        className="w-full max-w-[40%] rounded-lg p-4 shadow-lg dark:bg-gray-700 dark:text-white dark:placeholder:text-white"
+        className="@2xl:w-full @2xl:max-w-[40%] min-w-[25%] rounded-lg p-4 shadow-lg dark:bg-gray-700 dark:text-white dark:placeholder:text-white"
         aria-label="Search countries by name"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
@@ -68,5 +69,6 @@ export default function SearchCountries() {
         <option value="Oceania">Oceania</option>
       </select>
     </div>
+   
   );
 }
