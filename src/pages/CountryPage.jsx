@@ -15,18 +15,13 @@ function CountryPage() {
       try {
         const res = await fetch(`${API_URL_SINGLE}${name}`);
         const data = await res.json();
-        console.log(data);
-        // Extract languages, currency, native name, and borders
         const lang = Object.values(data[0].languages);
         const cur = Object.values(data[0].currencies)[0].name;
-        // const native = Object.values(data[0].name.native)[0].common;
         const borders = data[0].borders || [];
-
-        // Set state
+        
         setCountry(data[0]);
         setLanguages(lang);
         setCurrency(cur);
-        // setNativeName(native);
         setBorderCountries(borders);
       } catch (error) {
         setError("Failed to get the country data");
