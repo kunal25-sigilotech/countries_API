@@ -31,7 +31,7 @@ function Countries() {
             key={i}
             className="grid grid-rows-[12rem_min-content] rounded-lg bg-white shadow-md dark:bg-gray-700 dark:text-white"
           >
-            <figure className="">
+            <figure>
               <img
                 src={el.flags.png}
                 alt={el.name.common}

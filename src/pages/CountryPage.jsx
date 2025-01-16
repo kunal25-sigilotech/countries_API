@@ -49,7 +49,7 @@ function CountryPage() {
 
   return (
     <section className="dark:text-white @container">
-      <div className="mx-auto grid w-full max-w-7xl @4xl:grid-cols-2 grid-cols-1 @4xl:grid-rows-[min-content_minmax(0,20rem)] grid-rows-[min-content_18rem_min-content] gap-x-10 gap-y-12 px-8 py-6 pb-12">
+      <div className="mx-auto grid w-full max-w-7xl @4xl:grid-cols-2 grid-cols-1 @4xl:grid-rows-[min-content_minmax(0,20rem)] grid-rows-[repeat(3,min-content)] gap-x-10 gap-y-12 px-8 py-6 pb-12">
         <Link
           to="/"
           role="button"
